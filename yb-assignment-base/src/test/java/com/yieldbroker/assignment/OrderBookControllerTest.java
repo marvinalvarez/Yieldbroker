@@ -44,7 +44,7 @@ public class OrderBookControllerTest {
 	@Test
 	public void shouldBeBuyOrderAfterPlaceOrder() throws Exception {
 
-		BigDecimal buyPrice = new BigDecimal("2.5");
+		BigDecimal buyPrice = new BigDecimal("2.50");
 		int buyVolume = 100;
 
 		orderBookController.placeOrder(1, "buy", buyPrice, buyVolume);
@@ -61,7 +61,7 @@ public class OrderBookControllerTest {
 	@Test
 	public void shouldBeEmptyAfterPlaceAndCancel() throws Exception {
 
-		orderBookController.placeOrder(1, "buy", new BigDecimal("2.5"), 100);
+		orderBookController.placeOrder(1, "buy", new BigDecimal("2.50"), 100);
 		orderBookController.cancelOrder(1);
 
 		Assert.assertTrue(orderBookController.getOrderBook().getBuyOrders().isEmpty());
