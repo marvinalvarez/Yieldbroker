@@ -23,7 +23,7 @@ public class OrderBookDAOWriter {
 		return update;
 	}
 
-	public int delete(Order order) {
+	public int deleteById(Order order) {
 		String sql = "delete from YB_ORDER where id = ?";
 		System.out.println("sql=" + sql);
 
@@ -34,7 +34,7 @@ public class OrderBookDAOWriter {
 		return update;
 	}
 
-	public int remove(int clientOrderId) {
+	public int deleteByClientOrderId(int clientOrderId) {
 		String sql = "delete from YB_ORDER where CLIENT_ORDER_ID = ?";
 		System.out.println("sql=" + sql);
 

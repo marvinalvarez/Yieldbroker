@@ -42,6 +42,7 @@ public class OrderBookDAOWriterTest {
 
 	@After
 	public void tearDown() throws Exception {
+		writer.deleteByClientOrderId(1111);
 	}
 
 	@Test
@@ -49,8 +50,8 @@ public class OrderBookDAOWriterTest {
 
 		{
 			Order order = new Order();
-			order.setClientOrderId(1);
-			order.setPrice(new BigDecimal(11));
+			order.setClientOrderId(1111);
+			order.setPrice(new BigDecimal(11.11));
 			order.setReceivedTime(java.sql.Timestamp.valueOf("2018-09-10 10:10:10.0"));
 			order.setSide(Side.SELL);
 			order.setVolume(111);
@@ -58,8 +59,8 @@ public class OrderBookDAOWriterTest {
 		}
 		{
 			Order order = new Order();
-			order.setClientOrderId(2);
-			order.setPrice(new BigDecimal(22));
+			order.setClientOrderId(1111);
+			order.setPrice(new BigDecimal(22.22));
 			order.setReceivedTime(java.sql.Timestamp.valueOf("2018-09-12 12:12:12.0"));
 			order.setSide(Side.BUY);
 			order.setVolume(222);
@@ -67,8 +68,8 @@ public class OrderBookDAOWriterTest {
 		}
 		{
 			Order order = new Order();
-			order.setClientOrderId(3);
-			order.setPrice(new BigDecimal(33));
+			order.setClientOrderId(1111);
+			order.setPrice(new BigDecimal(33.33));
 			order.setReceivedTime(java.sql.Timestamp.valueOf("2018-09-13 13:13:13.0"));
 			order.setSide(Side.BUY);
 			order.setVolume(333);
@@ -78,36 +79,9 @@ public class OrderBookDAOWriterTest {
 		{
 			List<Order> list = reader.getAll();
 			for (Order order : list) {
-				System.out.println("order=" + order);
+				System.out.println("order retrieved=" + order);
 			}
 		}
 
 	}
-
-	@Test
-	public void delete() {
-		{
-			Order order = new Order();
-			order.setId(161);
-			writer.delete(order);
-		}
-		{
-			Order order = new Order();
-			order.setId(162);
-			writer.delete(order);
-		}
-		{
-			Order order = new Order();
-			order.setId(163);
-			writer.delete(order);
-		}
-		{
-			List<Order> list = reader.getAll();
-			for (Order order : list) {
-				System.out.println("order=" + order);
-			}
-		}
-
-	}
-
 }

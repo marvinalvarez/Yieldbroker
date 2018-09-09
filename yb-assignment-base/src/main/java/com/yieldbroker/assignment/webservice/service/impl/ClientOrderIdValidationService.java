@@ -26,7 +26,7 @@ public class ClientOrderIdValidationService implements ValidationServiceInterf {
 		System.out.println("clientOrderId=" + clientOrderId);
 
 		List<Order> list = this.daoReader.getByClientOrderId(clientOrderId);
-		System.out.println("list.size()=" + list.size());
+		System.out.println("number of records to delete. list.size()=" + list.size());
 
 		if (list.size() > 0) {
 			return true;

@@ -17,11 +17,11 @@ import org.springframework.test.context.junit4.SpringRunner;
 @RunWith(SpringRunner.class)
 @SpringBootTest
 @DirtiesContext(classMode = ClassMode.AFTER_EACH_TEST_METHOD)
-public class OrderBookDAOReaderTest {
+public class OrderBookTest {
 
 	@Autowired
-	private OrderBookDAOReader reader;
-
+	private OrderBook orderBook;
+	
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
 	}
@@ -40,10 +40,17 @@ public class OrderBookDAOReaderTest {
 
 	@Test
 	public void test() {
-
-		List<Order> list = reader.getAll();
-		for (Order order : list) {
-			System.out.println("order=" + order);
+		orderBook.refresh();
+		System.out.println(orderBook.toString());
+		{
+			List<Order> buyOrders = orderBook.getBuyOrders();
+			System.out.println("buyOrders.size()=" + buyOrders.size());
 		}
+		{
+			List<Order> sellOrders = orderBook.getSellOrders();
+			System.out.println("sellOrders.size()=" + sellOrders.size());
+		}
+
 	}
+
 }

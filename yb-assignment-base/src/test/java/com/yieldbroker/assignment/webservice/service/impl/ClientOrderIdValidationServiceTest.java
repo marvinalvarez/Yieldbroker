@@ -66,7 +66,7 @@ public class ClientOrderIdValidationServiceTest {
 		Assert.assertTrue(validate);
 
 		// cleanup
-		orderBookWriter.delete(order);
+		orderBookWriter.deleteByClientOrderId(77777);
 	}
 
 	@Test
