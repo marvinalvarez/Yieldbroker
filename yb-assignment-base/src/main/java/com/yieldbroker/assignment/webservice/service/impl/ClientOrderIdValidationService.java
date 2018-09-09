@@ -11,7 +11,7 @@ import com.yieldbroker.assignment.model.OrderBookDAOReader;
 import com.yieldbroker.assignment.webservice.service.ValidationServiceInterf;
 
 /**
- * Validates if the Client Order ID exists.
+ * Validates if the Client Order ID exists in the YB_ORDER table.
  * 
  * @author Marvin Alvarez
  */
@@ -21,6 +21,9 @@ public class ClientOrderIdValidationService implements ValidationServiceInterf {
 	@Autowired
 	private OrderBookDAOReader daoReader;
 
+	/**
+	 * Validates if the Client Order ID exists in the YB_ORDER table.
+	 */
 	public boolean validate(Order order) {
 		int clientOrderId = order.getClientOrderId();
 		System.out.println("clientOrderId=" + clientOrderId);

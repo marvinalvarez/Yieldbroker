@@ -1,53 +1,61 @@
 package com.yieldbroker.assignment.model;
 
-import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.yieldbroker.assignment.constant.Side;
+import com.yieldbroker.assignment.model.sort.OrderSorting_Buy;
+import com.yieldbroker.assignment.model.sort.OrderSorting_Sell;
 
+/**
+ * An order book that is a representation of the table YB_ORDER
+ * 
+ * @author Marvin Alvarez
+ */
 @Service
 public class OrderBook {
 
+	/**
+	 * DAO for reading the YB_ORDER table
+	 */
 	@Autowired
 	private OrderBookDAOReader orderBookDao;
 
-	private List<Order> buyOrders = new ArrayList<>();
-	private List<Order> sellOrders = new ArrayList<>();
-
+	/**
+	 * Constructor
+	 */
 	public OrderBook() {
-
 	}
 
+	/**
+	 * Returns a list of BUY orders.
+	 * 
+	 * @return
+	 */
 	public List<Order> getBuyOrders() {
 
-		return this.buyOrders;
+		List<Order> buyOrders = this.orderBookDao.getBySide(Side.BUY);
+		if (buyOrders.size() > 0) {
+			Collections.sort(buyOrders, new OrderSorting_Buy());
+		}
+
+		return buyOrders;
 	}
 
+	/**
+	 * Returns a list of SELL orders.
+	 * 
+	 * @return
+	 */
 	public List<Order> getSellOrders() {
 
-		return this.sellOrders;
-	}
-
-	public void refresh() {
-		this.buyOrders = this.orderBookDao.getBySide(Side.BUY);
-		if (this.buyOrders.size() > 0) {
-			//Collections.sort(this.buyOrders, new OrderSorting_Buy());
-			// TODO [MARVIN] uncomment
+		List<Order> sellOrders = this.orderBookDao.getBySide(Side.SELL);
+		if (sellOrders.size() > 0) {
+			Collections.sort(sellOrders, new OrderSorting_Sell());
 		}
-
-		this.sellOrders = this.orderBookDao.getBySide(Side.SELL);
-		if (this.sellOrders.size() > 0) {
-			//Collections.sort(this.sellOrders, new OrderSorting_Sell());
-			// TODO [MARVIN] uncomment
-		}
+		return sellOrders;
 	}
-
-	@Override
-	public String toString() {
-		return "OrderBook [buyOrders=" + this.buyOrders + ", sellOrders=" + this.sellOrders + "]";
-	}
-
 }

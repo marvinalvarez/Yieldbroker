@@ -61,34 +61,4 @@ public class OrderValidationServiceTest {
 		}
 	}
 
-	@Test
-	public void testBuy_Valid() {
-		Order order = new Order();
-		order.setSide("buy");
-
-		boolean validate_side = this.orderValidationService.validate_side(order);
-		Assert.assertTrue(validate_side);
-	}
-
-	@Test
-	public void testSell_Valid() {
-		Order order = new Order();
-		order.setSide("sell");
-
-		boolean validate_side = this.orderValidationService.validate_side(order);
-		Assert.assertTrue(validate_side);
-	}
-
-	@Test
-	public void test_Invalid() {
-		Order order = new Order();
-		order.setSide("UKNOWN_SIDE");
-
-		try {
-			this.orderValidationService.validate_side(order);
-			Assert.fail("YieldBrokerBusinessException must be thrown.");
-		} catch (YieldBrokerBusinessException be) {
-			System.out.println("YieldBrokerBusinessException successfully thrown and handled.");
-		}
-	}
 }

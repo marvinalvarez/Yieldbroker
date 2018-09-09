@@ -40,7 +40,6 @@ public class OrderBookTest {
 
 	@Test
 	public void test() {
-		orderBook.refresh();
 		System.out.println(orderBook.toString());
 		{
 			List<Order> buyOrders = orderBook.getBuyOrders();

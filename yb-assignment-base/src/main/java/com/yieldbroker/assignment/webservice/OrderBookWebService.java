@@ -20,6 +20,11 @@ import com.yieldbroker.assignment.webservice.util.JsonUtil;
 
 import io.swagger.annotations.ApiOperation;
 
+/**
+ * RESTful webservices to expose the OrderBook and its operations.
+ * 
+ * @author Marvin Alvarez
+ */
 @RestController
 public class OrderBookWebService {
 
@@ -32,13 +37,17 @@ public class OrderBookWebService {
 	@Autowired
 	private ClientOrderIdValidationService clientOrderIdValidationService;
 
+	/**
+	 * Returns the order book.
+	 * 
+	 * @return
+	 */
 	@RequestMapping(value = "/market/orderbook", method = RequestMethod.POST)
 	@ApiOperation(value = "Returns all orders grouped by side (i.e. buy or sell)")
 	public String getOrderBook() {
 		Map<String, List<Order>> map = new HashMap<String, List<Order>>();
 
 		OrderBook orderBook = this.orderBookController.getOrderBook();
-		orderBook.refresh();
 		{
 			List<Order> list = orderBook.getBuyOrders();
 			map.put("buyOrders", list);
@@ -51,6 +60,15 @@ public class OrderBookWebService {
 		return json;
 	}
 
+	/**
+	 * Places an order on the order book.
+	 * 
+	 * @param clientOrderId
+	 * @param side
+	 * @param price
+	 * @param volume
+	 * @return
+	 */
 	@RequestMapping(value = "/market/placeOrder", method = RequestMethod.POST)
 	@ApiOperation(value = "Places an order in the order book")
 	public String placeOrder(@RequestParam("clientOrderId") int clientOrderId, @RequestParam("side") String side,
@@ -69,6 +87,12 @@ public class OrderBookWebService {
 		return result;
 	}
 
+	/**
+	 * Removes an order from the order book.
+	 * 
+	 * @param clientOrderId
+	 * @return
+	 */
 	@RequestMapping(value = "/market/cancelOrder", method = RequestMethod.POST)
 	@ApiOperation(value = "Removes an order from the orderbook")
 	public String removeOrder(@RequestParam("clientOrderId") int clientOrderId) {

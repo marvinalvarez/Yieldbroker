@@ -4,8 +4,18 @@ import java.util.Comparator;
 
 import com.yieldbroker.assignment.model.Order;
 
+/**
+ * Comparator for sorting BUY trades where they are sorted by price (descending)
+ * and then time stamp (ascending).
+ * 
+ * @author Marvin Alvarez
+ */
 public class OrderSorting_Sell implements Comparator<Order> {
 
+	/**
+	 * Comparator for sorting BUY trades where they are sorted by price (descending)
+	 * and then time stamp (ascending).
+	 */
 	@Override
 	public int compare(Order o1, Order o2) {
 

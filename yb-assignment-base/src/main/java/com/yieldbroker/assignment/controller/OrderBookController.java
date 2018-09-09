@@ -30,7 +30,6 @@ public class OrderBookController {
 	 * @return order book containing buy and sell orders
 	 */
 	public OrderBook getOrderBook() {
-		this.orderBook.refresh();
 		return orderBook;
 	}
 

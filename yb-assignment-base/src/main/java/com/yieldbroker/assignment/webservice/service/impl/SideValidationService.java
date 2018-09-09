@@ -11,11 +11,13 @@ import com.yieldbroker.assignment.webservice.service.ValidationServiceInterf;
  * Validates if the side field in the order is valid.
  * 
  * @author Marvin Alvarez
-  */
+ */
 @Service
-public class SideValidationService implements ValidationServiceInterf{
-	
-	
+public class SideValidationService implements ValidationServiceInterf {
+
+	/**
+	 * Validates if the side field in the order is valid.
+	 */
 	public boolean validate(Order order) {
 		String side = order.getSide();
 		System.out.println("validating side=" + side);
