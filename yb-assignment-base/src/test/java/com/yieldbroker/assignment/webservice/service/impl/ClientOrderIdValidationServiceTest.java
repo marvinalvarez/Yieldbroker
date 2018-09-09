@@ -34,7 +34,7 @@ public class ClientOrderIdValidationServiceTest {
 	private static Order order = new Order();
 	{
 		order.setClientOrderId(77777);
-		order.setPrice(new BigDecimal(11));
+		order.setPrice(new BigDecimal(1.1));
 		order.setReceivedTime(java.sql.Timestamp.valueOf("2018-09-10 10:10:10.0"));
 		order.setSide(Side.SELL);
 		order.setVolume(111);

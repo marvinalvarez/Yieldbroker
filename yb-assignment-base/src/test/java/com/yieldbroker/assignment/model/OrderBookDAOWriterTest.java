@@ -51,7 +51,7 @@ public class OrderBookDAOWriterTest {
 		{
 			Order order = new Order();
 			order.setClientOrderId(1111);
-			order.setPrice(new BigDecimal(11.11));
+			order.setPrice(new BigDecimal("1.1"));
 			order.setReceivedTime(java.sql.Timestamp.valueOf("2018-09-10 10:10:10.0"));
 			order.setSide(Side.SELL);
 			order.setVolume(111);
@@ -60,7 +60,7 @@ public class OrderBookDAOWriterTest {
 		{
 			Order order = new Order();
 			order.setClientOrderId(1111);
-			order.setPrice(new BigDecimal(22.22));
+			order.setPrice(new BigDecimal("2.2"));
 			order.setReceivedTime(java.sql.Timestamp.valueOf("2018-09-12 12:12:12.0"));
 			order.setSide(Side.BUY);
 			order.setVolume(222);
@@ -69,7 +69,7 @@ public class OrderBookDAOWriterTest {
 		{
 			Order order = new Order();
 			order.setClientOrderId(1111);
-			order.setPrice(new BigDecimal(33.33));
+			order.setPrice(new BigDecimal("3.3"));
 			order.setReceivedTime(java.sql.Timestamp.valueOf("2018-09-13 13:13:13.0"));
 			order.setSide(Side.BUY);
 			order.setVolume(333);

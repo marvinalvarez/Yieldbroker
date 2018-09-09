@@ -32,7 +32,7 @@ public class OrderBookControllerTest {
 
 	@After
 	public void tearDown() throws Exception {
-		//writer.deleteByClientOrderId(2);
+		writer.deleteByClientOrderId(1);
 	}
 
 	@Test
@@ -47,7 +47,7 @@ public class OrderBookControllerTest {
 		BigDecimal buyPrice = new BigDecimal("2.5");
 		int buyVolume = 100;
 
-		orderBookController.placeOrder(2, "buy", buyPrice, buyVolume);
+		orderBookController.placeOrder(1, "buy", buyPrice, buyVolume);
 		OrderBook orderBook = orderBookController.getOrderBook();
 		List<Order> buyOrders = orderBook.getBuyOrders();
 		Assert.assertEquals(1, buyOrders.size());
